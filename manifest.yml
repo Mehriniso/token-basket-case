@@ -1,0 +1,5 @@
+applications:
+    - name: token-base-sample
+      instances: 1
+      host: token-base-sample
+      path: target/token-basket-case-0.0.1-SNAPSHOT.war

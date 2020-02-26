@@ -4,7 +4,6 @@ import com.example.demo.model.BodyMessage;
 import com.example.demo.model.Item;
 import com.example.demo.model.Response;
 import com.example.demo.restclient.InstantOrderRestClient;
-import com.example.demo.utilities.FileIO;
 import com.example.demo.utilities.ProjectConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -63,23 +63,9 @@ public class OrderCoffee
         return  bodyMessage;
     }
 
-    /*
-    *  The method each time reads id value from file and updates it by incrementing +10
-    *  Note: id is required field and should be unique
-    * */
     public  Integer getId()  {
 
-        FileIO fileIO = new FileIO();
-        Integer id = 0;
-        try {
-            id = fileIO.readFromFile();
-            id+=incrementBy;
-            fileIO.writeToFile(id);
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return  id;
+      return  ( int) (new Date().getTime()/1000);
 
     }
 
